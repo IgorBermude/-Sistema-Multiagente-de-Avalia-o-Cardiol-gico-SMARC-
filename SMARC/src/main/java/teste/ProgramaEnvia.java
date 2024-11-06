@@ -17,7 +17,7 @@ import java.net.UnknownHostException;
  * @author Paulo
  */
 public class ProgramaEnvia {
-    public void main(String[] args){
+    public static void main(String[] args){
         String multiCastAddress = "224.0.0.1";
         final int multiCastPort = 52684;
         

@@ -17,7 +17,7 @@ import java.net.UnknownHostException;
  * @author Paulo
  */
 public class ProgramaRecebe {
-    public void  main(String[] args){
+    public static void main(String[] args){
         MulticastSocket s = null;
         InetAddress group = null;
         String multiCastAddress = "224.0.0.1";
