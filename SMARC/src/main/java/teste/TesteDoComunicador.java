@@ -4,18 +4,27 @@
  */
 package teste;
 
+import agentes.AgObesi;
+import agentes.AgPressArt;
+import agentes.Agente;
+
 /**
  *
  * @author Paulo
  */
 public class TesteDoComunicador {
-    public static void main(String[] args){
-        Comunicador c1 = new Comunicador("Com-01");
-        Comunicador c2 = new Comunicador("Com-02");
-        Comunicador c3 = new Comunicador("Com-03");
-        
-        c1.start();
-        c2.start();
-        c3.start();
+    public static void main(String[] args) {
+        // Dados de exemplo do paciente
+        Agente agenteObesidade = new AgObesi("Agente Obesidade", 107, 1.70);
+        Agente agentePressao = new AgPressArt("Agente Pressao", 150, 95);
+        Agente agenteSedetarismo = new AgSedet("Agente Sedentarismo", )
+
+        // Inicializa os comunicadores para cada agente
+        Comunicador comunicadorObesidade = new Comunicador(agenteObesidade);
+        Comunicador comunicadorPressao = new Comunicador(agentePressao);
+
+        // Inicia as threads para simular a comunicação
+        comunicadorObesidade.start();
+        comunicadorPressao.start();
     }
 }
