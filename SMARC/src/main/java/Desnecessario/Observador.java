@@ -2,20 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package teste;
+package Desnecessario;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 /**
  *
  * @author Paulo
  */
-public class Envia {
+public class Observador {
     public static void main(String[] args) throws IOException{
         int porta = 6868;
         InetAddress ipGrupo = null;
@@ -36,19 +37,23 @@ public class Envia {
             System.out.println("FALHA no IOException: " +e.getMessage());
         }
         
-        DatagramPacket dtgrm = new DatagramPacket(msg.getBytes(), msg.length(), ipGrupo, porta);
+        byte[] buf = new byte[1512];
         
-        try{
-            s.send(dtgrm);
-        }catch(IOException e){
-            System.out.println("FALHA 2 IOException: " +e.getMessage());
-        }
-        
-        try{
-            s.leaveGroup(ipGrupo);
-            if(s != null) s.close();
-        }catch(IOException e){
-            System.out.println("FALHA 3 IOException: "+e.getMessage());
+        while (true){
+            DatagramPacket recibo = new DatagramPacket(buf, buf.length);
+            
+            try{
+                s.setSoTimeout(120000);
+                s.receive(recibo);
+            }catch(SocketTimeoutException e){
+                System.out.println("Observador FALHA SocketTimeoutException: "+e.getMessage());
+                break;
+            }catch(IOException e){
+                System.out.println("Observador FALHA IOException: "+e.getMessage());
+            }
+            
+            String str = new String(recibo.getData());
+            System.out.println("(" + recibo.getAddress().getHostAddress()+ ":" + recibo.getPort() + ") <<" + str.trim());
         }
     }
 }
