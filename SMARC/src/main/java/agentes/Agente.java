@@ -18,6 +18,8 @@ public abstract class Agente implements Serializable{
     }
 
     public abstract DadosAgente processarDados(); // Método abstrato para cada agente implementar sua lógica
+    
+    public abstract String processarResultado(); // Método abstrato para cada agente processar seus resultados
 
     public String getNome() {
         return nome;

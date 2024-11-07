@@ -13,10 +13,12 @@ import java.io.Serializable;
 public class DadosAgente implements Serializable {
     private String tipo;
     private double grauEvidencia;
+    private String classificacao;
 
-    public DadosAgente(String tipo, double grauEvidencia) {
+    public DadosAgente(String tipo, double grauEvidencia, String classificacao) {
         this.tipo = tipo;
         this.grauEvidencia = grauEvidencia;
+        this.classificacao = classificacao;
     }
 
     public String getTipo() {

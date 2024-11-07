@@ -19,6 +19,7 @@ public class AgNicot extends Agente {
     @Override
     public DadosAgente processarDados() {
         double grauEvidencia = calcularGrauEvidencia();
+        String resultado =
         return new DadosAgente("Nicotina", grauEvidencia);
     }
 
@@ -40,5 +41,10 @@ public class AgNicot extends Agente {
         } else {
             return 0.0;
         }
+    }
+    
+    @Override
+    private String processarResultado(){
+        
     }
 }
